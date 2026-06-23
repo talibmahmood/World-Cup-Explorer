@@ -55,7 +55,7 @@ export const MATCHES_DATA: Match[] = [
   {
     id: 'm6',
     group: 'B',
-    homeTeamCode: 'es',
+    homeTeamCode: 'pt',
     awayTeamCode: 'au',
     homeScore: 2,
     awayScore: 0,
@@ -76,7 +76,7 @@ export const MATCHES_DATA: Match[] = [
     id: 'm8',
     group: 'B',
     homeTeamCode: 'de',
-    awayTeamCode: 'es',
+    awayTeamCode: 'pt',
     date: '2026-06-30',
     time: '18:00',
     status: 'scheduled'
@@ -97,10 +97,10 @@ export const INITIAL_GROUPS: GroupData[] = [
   },
   {
     name: 'Group B',
-    teams: ['ar', 'es', 'de', 'ma', 'au'],
+    teams: ['ar', 'pt', 'de', 'ma', 'au'],
     standings: [
       { teamCode: 'ar', played: 1, won: 1, drawn: 0, lost: 0, goalsFor: 3, goalsAgainst: 2, points: 3 },
-      { teamCode: 'es', played: 1, won: 1, drawn: 0, lost: 0, goalsFor: 2, goalsAgainst: 0, points: 3 },
+      { teamCode: 'pt', played: 1, won: 1, drawn: 0, lost: 0, goalsFor: 2, goalsAgainst: 0, points: 3 },
       { teamCode: 'ma', played: 0, won: 0, drawn: 0, lost: 0, goalsFor: 0, goalsAgainst: 0, points: 0 },
       { teamCode: 'de', played: 1, won: 0, drawn: 0, lost: 1, goalsFor: 2, goalsAgainst: 3, points: 0 },
       { teamCode: 'au', played: 1, won: 0, drawn: 0, lost: 1, goalsFor: 0, goalsAgainst: 2, points: 0 }

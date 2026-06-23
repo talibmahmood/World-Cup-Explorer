@@ -107,12 +107,13 @@ export const CountryExplorer: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left Column: Flag gallery list */}
         <div className="lg:col-span-1">
-          <div className="kids-card bg-white border-slate-900 p-4 h-[630px] flex flex-col">
+          <div className="kids-card bg-white border-slate-900 p-4 h-auto lg:h-[630px] flex flex-col">
             <h3 className="font-display font-extrabold text-slate-850 text-base mb-3 flex items-center gap-1.5 border-b-2 border-dashed border-slate-100 pb-2 shrink-0">
               <Globe className="w-5 h-5 text-indigo-500" /> Countries ({filteredCountries.length})
             </h3>
             
-            <div className="flex-1 overflow-y-auto pr-1 space-y-1.5">
+            {/* Mobile/Tablet Horizontal Scrolling Gallery */}
+            <div className="flex lg:hidden flex-row overflow-x-auto gap-2 py-2 pb-3 px-1 snap-x scrollbar-none shrink-0" style={{ WebkitOverflowScrolling: 'touch' }}>
               {filteredCountries.length > 0 ? (
                 filteredCountries.map(c => {
                   const isActive = c.id === activeCountryId;
@@ -120,7 +121,41 @@ export const CountryExplorer: React.FC = () => {
 
                   return (
                     <button
-                      key={c.id}
+                      key={`mob-${c.id}`}
+                      onClick={() => handleCountrySelect(c.id)}
+                      className={`snap-center shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-2xl border-2 transition text-left cursor-pointer select-none ${
+                        isActive
+                          ? 'border-indigo-600 bg-indigo-50 font-bold font-display text-sm'
+                          : 'border-slate-200 hover:bg-slate-50 font-display text-xs text-slate-810'
+                      }`}
+                    >
+                      <span className="text-xl sm:text-2xl leading-none">{c.flag}</span>
+                      <span className="whitespace-nowrap">{c.name}</span>
+                      {hasStamp && (
+                        <span className="text-[10px]" title="Stamped!">
+                          ⭐
+                        </span>
+                      )}
+                    </button>
+                  );
+                })
+              ) : (
+                <div className="text-slate-400 text-xs italic font-sans py-2">
+                  No countries found!
+                </div>
+              )}
+            </div>
+
+            {/* Desktop Vertical Scrollable countries list */}
+            <div className="hidden lg:flex flex-col flex-1 overflow-y-auto pr-1 space-y-1.5">
+              {filteredCountries.length > 0 ? (
+                filteredCountries.map(c => {
+                  const isActive = c.id === activeCountryId;
+                  const hasStamp = currentUser?.exploredCountries.includes(c.id);
+
+                  return (
+                    <button
+                      key={`desk-${c.id}`}
                       onClick={() => handleCountrySelect(c.id)}
                       className={`w-full flex items-center justify-between p-2 rounded-xl border-2 transition text-left cursor-pointer select-none ${
                         isActive

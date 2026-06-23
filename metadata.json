@@ -1,0 +1,6 @@
+{
+  "name": "World Cup Explorer",
+  "description": "An interactive educational learning game for children to explore countries, cultures, geography, and fun facts through the magic of the FIFA World Cup.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
